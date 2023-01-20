@@ -1,0 +1,32 @@
+QUES:
+https://leetcode.com/problems/longest-happy-prefix/description/
+
+CODE:
+https://leetcode.com/problems/longest-happy-prefix/submissions/881700342/
+
+Here in this question we have used the concepts of DP and KMP(pattern matching algorithm), we maintained a string to which we kept on adding characters,
+from the start and end, unless we found a difference.
+
+class Solution {
+public:
+    string longestPrefix(string s) {
+        string ans="";
+        vector<int>pos(s.size(), 0);
+        int i=0, j=1;
+        while(j<s.size()){
+            if(s[i]==s[j]){
+                pos[j]=i+1;
+                i++;
+                j++;
+            }
+            else if(i){
+                i=pos[i-1];
+            }
+            else{
+                j++;
+            }
+        }
+        ans=s.substr(0, i);
+        return ans;
+    }
+};
