@@ -1,0 +1,29 @@
+QUES:
+Magical String problem 
+https://leetcode.com/problems/magical-string/description/
+
+CODE:
+In this problem, a magical string of 1 and 2 was provided, and we were supposed to count the number of times '1' occured in the string,
+for a given length of string. I have initiated the string with '122' and then I have implemented a while loop to generate the string upto
+the length given by the user. After that I have used the index operator and the bitwise operator in order to create the string which follows the 
+magical string rule.
+
+https://leetcode.com/problems/magical-string/submissions/884432628/
+
+class Solution {
+public:
+    int magicalString(int n) {
+        string magicstring="122";
+        int index=2;
+        while(magicstring.size()<n){
+            int repeat=magicstring[index]-'0';
+            char nextChar=magicstring.back()^3;
+            magicstring+= string(repeat,nextChar);
+            index++;
+        }
+        return count(magicstring.begin(),magicstring.begin()+n,'1');
+       
+    }
+};
+
+
